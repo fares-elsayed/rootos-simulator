@@ -1,0 +1,68 @@
+{
+  "name": "rootos",
+  "version": "1.0.0",
+  "description": "RootOS \u2014 Operating System Simulator",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "author": "Fares",
+  "scripts": {
+    "build-exe": "react-scripts build && electron-builder -w",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && cross-env ROOTOS_DEV=1 electron .\"",
+    "package": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "test": "node --test core.test.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^41.5.0",
+    "electron-builder": "^26.8.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.fareselsayed.rootos",
+    "productName": "RootOS",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
